@@ -1,21 +1,19 @@
-import React from 'react'
+import React from "react";
 
-function CreaturePage(props) {
-  const data = props.data;
-
+function CreaturePage({ data }) {
+  // TODO display food + non-food items
   return (
-    <div className='items-page'>
+    <div className="items-page">
       {data &&
         Object.keys(data).map((category) => {
           if (category === "creatures") {
             return Object.keys(data[category]).map((subCategory) => {
               if (subCategory === "food") {
                 return (
-                  <div key={subCategory}>
-                    {data[category][subCategory].map((item)=> (
+                  <div key={subCategory} className="items-page">
+                    {data[category][subCategory].map((item) => (
                       <div key={item.name}>
-                        <p>{item.name}</p>
-                        <img src={item.image} style={{width:50}} />
+                        <img src={item.image} />
                       </div>
                     ))}
                   </div>
@@ -25,7 +23,7 @@ function CreaturePage(props) {
           }
         })}
     </div>
-  )
+  );
 }
 
 export default CreaturePage;

@@ -31,7 +31,7 @@ function App() {
           <Route path="/monsters" element={<MonsterPage data={data}/>} />
           <Route path="/equipment" element={<EquipmentPage data={data}/>} />
           <Route path="/materials" element={<MaterialPage data={data}/>} />
-          <Route path="/treasures" element={<TreasurePage data={data}/>} />
+          <Route path="/treasure" element={<TreasurePage data={data}/>} />
           <Route path="/item/:id" element={<ItemDisplay data={data}/>} />
         </Routes>
       </Router>

@@ -1,58 +1,56 @@
-::-webkit-scrollbar {
-    display: none;
-}
-
 body {
-    margin: 0;
-    padding: 0;
-    color: white;
+  margin: 0;
+  padding: 0;
+  color: white;
 }
 
 #root {
-    background-color: black;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: black;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App {
-    background-image: url("./assets/Compendium_Background.png");
-    background-position:center;
-    background-size:auto;
-    box-shadow: 0 0 20px #fff;
-    width: 100vw;
-    height: 100vh;
-    
+  background-image: url("./assets/Compendium_Background.png");
+  width: 100vw;
+  min-height: 100vh;
 }
 
 .navbar {
-    width: 100vw;
-    height: 10vh;
-    .links {
-        display: flex;
-        gap: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  width: 100vw;
+  height: 10vh;
+  .links {
+    display: flex;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .homepage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 80vh;
 }
 
 .homepage-img {
-    width: 40%;
+  width: 40%;
 }
 
 .items-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  img{
+    width: 150px;
+  }
 }
