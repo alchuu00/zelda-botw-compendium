@@ -8,6 +8,7 @@ import MaterialPage from "./pages/MaterialPage";
 import TreasurePage from "./pages/TreasurePage";
 import ItemDisplay from "./pages/ItemDisplay";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const [data, setData] = useState(null);
@@ -34,6 +35,7 @@ function App() {
           <Route path="/treasure" element={<TreasurePage data={data}/>} />
           <Route path="/item/:id" element={<ItemDisplay data={data}/>} />
         </Routes>
+        <Footer/>
       </Router>
     </div>
   );

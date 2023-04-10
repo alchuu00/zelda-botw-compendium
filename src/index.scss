@@ -2,11 +2,12 @@ body {
   margin: 0;
   padding: 0;
   color: white;
+  font-family: "Roboto", sans-serif;
 }
 
 #root {
   background-color: black;
-  width: 100vw;
+  max-width: 100vw;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -15,19 +16,27 @@ body {
 
 .App {
   background-image: url("./assets/Compendium_Background.png");
-  width: 100vw;
   min-height: 100vh;
 }
 
 .navbar {
-  width: 100vw;
-  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .nav-title {
+    font-size: xx-large;
+  }
   .links {
     display: flex;
-    gap: 10px;
+    gap: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 20px;
+    img {
+      width: 70%;
+    }
   }
 }
 
@@ -44,13 +53,46 @@ body {
 }
 
 .items-page {
-  margin: 20px;
+  min-width: 100vw;
+  margin: 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 35px;
   flex-wrap: wrap;
-  img{
-    width: 150px;
+  .item-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 178px;
+    height: 178px;
+    position: relative;
+    background-image: url("./assets/item_frame.png");
+    background-position: center;
+    background-size: cover;
+    .item-img {
+      width: 160px;
+    }
+    .item-id {
+      position: absolute;
+      bottom: 10px;
+      left: 15px;
+      z-index: 1;
+      color: #3cd3fc;
+      text-shadow: 0 0 5px #004867, 0 0 15px #000000;
+      font-size: 18px;
+    }
   }
+  .item-name {
+    margin-top: 5px;
+    color: #3cd3fc;
+    text-align: center;
+    text-shadow: 0 0 5px #22cfff,
+  }
+}
+
+.footer {
+
 }

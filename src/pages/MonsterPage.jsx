@@ -1,24 +1,33 @@
 import React from 'react'
+import { startCase } from "lodash";
 
 function MonsterPage({data}) {
   return (
-<div className="items-page">
-        {data &&
-          Object.keys(data).map((category) => {
-            if (category === "monsters") {
-              return (
-                <div key={category} className="items-page">
-                  {data[category].map((item) => (
-                    <div key={item.name}>
-                      <img src={item.image} />
+    <>
+      {data &&
+        Object.keys(data).map((category) => {
+          if (category === "monsters") {
+            return (
+              <div key={category} className="items-page">
+                {data[category]
+                  .sort((a, b) => a.id - b.id)
+                  .map((item) => (
+                    <div key={item.name} className="item-container">
+                      <div className="item-img-container">
+                        <img className="item-img" src={item.image} />
+                        <div className="item-id">
+                          {item.id.toString().padStart(3, '0')}
+                        </div>
+                      </div>
+                      <div className="item-name">{startCase(item.name)}</div>
                     </div>
                   ))}
-                </div>
-              );
-            }
-          })}
-      </div>
-  )
+              </div>
+            );
+          }
+        })}
+    </>
+  );
 }
 
 export default MonsterPage
