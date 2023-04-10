@@ -41,6 +41,13 @@ body {
     margin: 20px;
     img {
       width: 70%;
+      filter: brightness(0.5)
+    }
+    img:hover {
+      filter: brightness(1);
+    }
+    img.active {
+      filter: brightness(1);
     }
   }
 }
@@ -58,12 +65,18 @@ body {
   width: 40%;
 }
 
+.homepage-text {
+  text-align: center;
+  margin: 0 500px;
+  color: #ffdc82;
+}
+
 .modal-open {
   overflow: hidden;
 }
 
 .animation-appear {
-  animation: fade-in 5s ease-out forwards;
+  animation: fade-in 8s ease-out forwards;
   opacity: 0;
 }
 
@@ -98,6 +111,10 @@ body {
     background-size: cover;
     .item-img {
       width: 160px;
+      filter: brightness(0.7);
+    }
+    .item-img:hover {
+      filter: brightness(1);
     }
     .item-id {
       position: absolute;
@@ -118,6 +135,7 @@ body {
 }
 
 .footer {
+  color: #22cfff;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,9 +1,11 @@
 import React from "react";
 import { startCase } from "lodash";
+import HoverSound from "../components/HoverSound"
 
 function MaterialPage({ data }) {
   return (
     <>
+    <HoverSound/>
       {data &&
         Object.keys(data).map((category) => {
           if (category === "materials") {
