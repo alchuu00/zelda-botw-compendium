@@ -17,6 +17,11 @@ body {
 .App {
   background-image: url("./assets/Compendium_Background.png");
   min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .navbar {
@@ -42,22 +47,41 @@ body {
 
 .homepage {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 80vh;
+  min-height: 80vh;
 }
 
 .homepage-img {
   width: 40%;
 }
 
+.modal-open {
+  overflow: hidden;
+}
+
+.animation-appear {
+  animation: fade-in 5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .items-page {
   min-width: 100vw;
+  min-height: 100vh;
   margin: 0 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 35px;
   flex-wrap: wrap;
   .item-img-container {
@@ -89,10 +113,14 @@ body {
     margin-top: 5px;
     color: #3cd3fc;
     text-align: center;
-    text-shadow: 0 0 5px #22cfff,
+    text-shadow: 0 0 5px #22cfff;
   }
 }
 
 .footer {
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
 }
