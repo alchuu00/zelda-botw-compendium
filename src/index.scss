@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "hylia-serif-beta-regular";
+  src: url("./assets/HyliaSerif.ttf") format("truetype");
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -41,7 +46,7 @@ body {
     margin: 20px;
     img {
       width: 70%;
-      filter: brightness(0.5)
+      filter: brightness(0.5);
     }
     img:hover {
       filter: brightness(1);
@@ -50,6 +55,20 @@ body {
       filter: brightness(1);
     }
   }
+}
+
+.begin-btn {
+  background-image: url("./assets/start_button.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 336px;
+  height: 65px;
+  border-radius: 10px;
+}
+
+.begin-btn:hover {
+  filter: brightness(1.5);
 }
 
 .homepage {
@@ -63,12 +82,28 @@ body {
 
 .homepage-img {
   width: 40%;
+  margin-bottom: 50px;
 }
 
-.homepage-text {
-  text-align: center;
-  margin: 0 500px;
-  color: #ffdc82;
+.homepage-bg {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./assets/scroll.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .homepage-text {
+    width: 500px;
+    text-align: center;
+    color: #261b00;
+    font-size: 22px;
+    h1 {
+      font-family: "hylia-serif-beta-regular", sans-serif;
+    }
+  }
 }
 
 .modal-open {
@@ -76,7 +111,7 @@ body {
 }
 
 .animation-appear {
-  animation: fade-in 8s ease-out forwards;
+  animation: fade-in 6s ease-out forwards;
   opacity: 0;
 }
 
@@ -111,7 +146,7 @@ body {
     background-size: cover;
     .item-img {
       width: 160px;
-      filter: brightness(0.7);
+      filter: brightness(0.8);
     }
     .item-img:hover {
       filter: brightness(1);
@@ -131,6 +166,36 @@ body {
     color: #3cd3fc;
     text-align: center;
     text-shadow: 0 0 5px #22cfff;
+  }
+}
+
+.item-display-main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1000px;
+  gap: 20px;
+  height: 100vh;
+  background-image: url("./assets/item-desc-bg.png");
+  background-position: center;
+  background-size:contain;
+  background-repeat: no-repeat;
+  padding: 50px;
+  .item-display-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 20px;
+  }
+  .exit-btn {
+    margin-bottom: 420px;
+    background-image: url("./assets/back.png");
+    background-position: center;
+    background-size:contain;
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 70px;
   }
 }
 

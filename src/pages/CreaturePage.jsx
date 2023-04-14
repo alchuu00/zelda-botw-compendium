@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { startCase } from "lodash";
 import ItemDisplay from "./ItemDisplay";
+import HoverSound from "../components/HoverSound"
 
-function CreaturePage({ data }) {
-  const [selectedItem, setSelectedItem] = useState(false);
-
-  const handleItemClick = (item) => {
-    setSelectedItem(item);
-  };
-
+function CreaturePage({ data, selectedItem, handleItemDisplayExit, handleItemClick }) {
   return (
     <>
+    <HoverSound/>
       {selectedItem ? (
-        <ItemDisplay item={selectedItem} />
+        <ItemDisplay item={selectedItem} handleItemDisplayExit={handleItemDisplayExit} />
       ) : (
         <>
           {data &&

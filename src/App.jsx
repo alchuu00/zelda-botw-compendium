@@ -11,11 +11,21 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import soundtrack from "./assets/main_theme_soundtrack.mp3";
 import clickSound from "./assets/click.mp3";
+import HoverSound from "./components/HoverSound";
 
 function App() {
   const [data, setData] = useState(null);
   const [audio, setAudio] = useState(null);
   const [showContent, setShowContent] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(false);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  const handleItemDisplayExit = () => {
+    setSelectedItem(false);
+  };
 
   useEffect(() => {
     fetch("https://botw-compendium.herokuapp.com/api/v2/all")
@@ -24,6 +34,8 @@ function App() {
         setData(apiData.data);
       });
   }, []);
+
+  console.log(data)
 
   useEffect(() => {
     const audioElement = new Audio(soundtrack);
@@ -59,29 +71,29 @@ function App() {
 
   return (
     <div className="App">
+      <HoverSound/>
       {showContent ? (
         <Router>
           <Navbar />
           <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/creatures" element={<CreaturePage data={data} />} />
-            <Route path="/monsters" element={<MonsterPage data={data} />} />
-            <Route path="/equipment" element={<EquipmentPage data={data} />} />
-            <Route path="/materials" element={<MaterialPage data={data} />} />
-            <Route path="/treasure" element={<TreasurePage data={data} />} />
-            <Route path="/item/:id" element={<ItemDisplay data={data} />} />
+            <Route path="/creatures" element={<CreaturePage data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
+            <Route path="/monsters" element={<MonsterPage data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
+            <Route path="/equipment" element={<EquipmentPage data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
+            <Route path="/materials" element={<MaterialPage data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
+            <Route path="/treasure" element={<TreasurePage data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
+            <Route path="/item/:id" element={<ItemDisplay data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
           </Routes>
           <Footer />
         </Router>
       ) : (
-        <button
+        <div className="begin-btn item-container"
           onClick={() => {
             handlePlayButtonClick();
             handleButtonClick();
           }}
         >
-          Begin the journey
-        </button>
+        </div>
       )}
     </div>
   );
