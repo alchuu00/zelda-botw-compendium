@@ -1,61 +1,103 @@
 import React from "react";
+import { startCase } from "lodash";
 
 function ItemDisplay({ item, handleItemDisplayExit }) {
   return (
-    <div className="item-display-main-container">
-      <div className="item-display-container">
-        <div>
-          <p>
-            {item.id.toString().padStart(3, "0")} {item.name}
-          </p>
-          <img src={item.image} alt="Item Image" />
-        </div>
-        <div>
-          {item.hearts_recovered ? (
+    <>
+      <div className="item-display-main-container">
+        <div className="item-display-main-bg">
+          <div className="item-display-container">
+            <h1>
+              {item.id.toString().padStart(3, "0")} {item.name}
+            </h1>
+            <img src={item.image} alt="Item Image" />
+
             <div>
-              Hearts recovered:{" "}
-              {item.hearts_recovered < 0 ? (
-                <img src="src/assets/heart_half.png" alt="Half Heart" />
-              ) : null}
-              {item.hearts_recovered > 0 ? (
-                <>
-                  {[...Array(Math.floor(item.hearts_recovered))].map((_, index) => (
-                    <img
-                      key={index}
-                      src="src/assets/heart.png"
-                      alt="Full Heart"
-                      style={{ marginLeft: "5px" }}
-                    />
-                  ))}
-                  {item.hearts_recovered % 1 === 0.5 ? (
-                    <img
-                      src="src/assets/heart_half.png"
-                      alt="Half Heart"
-                      style={{ marginLeft: "5px" }}
-                    />
+              {item.hearts_recovered !== undefined && (
+                <div>
+                  Hearts recovered:{" "}
+                  {item.hearts_recovered < 0 ? (
+                    <img src="src/assets/heart_half.png" alt="Half Heart" />
                   ) : null}
-                </>
+                  {item.hearts_recovered > 0 ? (
+                    <>
+                      {[...Array(Math.floor(item.hearts_recovered))].map(
+                        (_, index) => (
+                          <img
+                            key={index}
+                            src="src/assets/heart.png"
+                            alt="Full Heart"
+                            className="margin"
+                          />
+                        )
+                      )}
+                      {item.hearts_recovered % 1 === 0.5 ? (
+                        <img
+                          src="src/assets/heart_half.png"
+                          alt="Half Heart"
+                          className="margin"
+                        />
+                      ) : null}
+                    </>
+                  ) : null}
+                  {item.hearts_recovered === 0 ? <span>0</span> : null}
+                </div>
+              )}
+
+              {item.attack || item.defense ? (
+                <div>
+                  {item.attack ? <div>Attack: {item.attack}</div> : null}
+                  {item.defense ? <div>Defense: {item.defense}</div> : null}
+                </div>
               ) : null}
             </div>
-          ) : null}
-          {item.attack || item.defense ? (
-            <>
-              <div>Attack: {item.attack}</div>
-              <div>Defense: {item.defense}</div>
-            </>
-          ) : null}
+          </div>
+          <div className="item-display-container">
+            <div className="exit-btn" onClick={handleItemDisplayExit}></div>
+
+            <div className="description">{item.description}</div>
+            {item.common_locations && item.common_locations.length > 0 && (
+              <div className="display-row">
+                <strong>Common locations: </strong>
+                {item.common_locations.map((location, index) => (
+                  <div key={index}>
+                    <span>{startCase(location)}</span>
+                    {index !== item.common_locations.length - 1 && (
+                      <span>, </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="display-row">
+              {item.drops && item.drops.length > 0 ? (
+                <div className="display-row">
+                  <strong>Drops: </strong>
+                  {item.drops.map((drop, index) => (
+                    <div key={index}>
+                      <span>{startCase(drop)}</span>
+                      {index !== item.drops.length - 1 && <span>, </span>}
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="display-row">
+              {item.cooking_effects && item.cooking_effects.length > 0 ? (
+                <div className="display-row">
+                  <strong>Cooking effects: </strong>
+                  {item.cooking_effects.map((effect, index) => (
+                    <span key={index}>{startCase(effect)}</span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
         </div>
       </div>
-      <div className="item-display-container">
-        <div>{item.description}</div>
-        <div>Common locations: {item.common_locations}</div>
-        {item.drops ? <div>Drops: {item.drops}</div> : null}
-        {item.cooking_effect ? (
-          <div>Cooking effect: {item.cooking_effect}</div>
-        ) : null}
-      </div>
-      <div className="exit-btn" onClick={handleItemDisplayExit}></div>
-    </div>
+    </>
   );
 }
 
