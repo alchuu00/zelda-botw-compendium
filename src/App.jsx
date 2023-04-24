@@ -39,7 +39,7 @@ function App() {
 
   useEffect(() => {
     const audioElement = new Audio(soundtrack);
-    audioElement.volume = 0.5;
+    audioElement.volume = 0.3;
     audioElement.loop = true;
     setAudio(audioElement);
   }, []);
@@ -87,12 +87,14 @@ function App() {
           <Footer />
         </Router>
       ) : (
-        <div className="begin-btn item-container"
+        <div className="homepage">
+        <div className="begin-btn"
           onClick={() => {
             handlePlayButtonClick();
             handleButtonClick();
           }}
         >
+        </div>
         </div>
       )}
     </div>

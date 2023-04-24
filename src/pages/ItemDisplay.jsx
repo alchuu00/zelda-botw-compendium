@@ -6,11 +6,11 @@ function ItemDisplay({ item, handleItemDisplayExit }) {
     <>
       <div className="item-display-main-container">
         <div className="item-display-main-bg">
-          <div className="item-display-container">
+          <div className="item-display-container a">
             <h1>
               {item.id.toString().padStart(3, "0")} {item.name}
             </h1>
-            <img src={item.image} alt="Item Image" />
+            <img className="item-img" src={item.image} alt="Item Image" />
 
             <div>
               {item.hearts_recovered !== undefined && (
@@ -52,10 +52,10 @@ function ItemDisplay({ item, handleItemDisplayExit }) {
               ) : null}
             </div>
           </div>
-          <div className="item-display-container">
-            <div className="exit-btn" onClick={handleItemDisplayExit}></div>
-
+          <div className="item-display-container b">
+            <img className="line" src="src\assets\line.png"></img>
             <div className="description">{item.description}</div>
+            <img className="line" src="src\assets\line.png"></img>
             {item.common_locations && item.common_locations.length > 0 && (
               <div className="display-row">
                 <strong>Common locations: </strong>
@@ -95,6 +95,7 @@ function ItemDisplay({ item, handleItemDisplayExit }) {
               ) : null}
             </div>
           </div>
+          <div className="item-display-container c"><div className="exit-btn" onClick={handleItemDisplayExit}><img src="src\assets\back.png" alt="" /></div></div>
         </div>
       </div>
     </>
