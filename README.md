@@ -6,4 +6,6 @@ This interactive guide lets users search and browse through all the items, weapo
 w/ Hyrule Compendium API:
 https://gadhagod.github.io/Hyrule-Compendium-API/#/
 
+<hr>
+
 live preview: https://unique-baklava-e52212.netlify.app
