@@ -20,38 +20,64 @@ body {
 .App {
   background-image: url("./assets/Compendium_Background.png");
   min-height: 100vh;
-  min-width: 100vw;
+  max-width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
 }
 
+.loading-bar {
+  width: 60vw;
+  height: 20px;
+  background-color: #d6d6d6;
+  z-index: 9999;
+  border-radius: 20px;
+}
+
+.loading-bar-progress {
+  width: 0%;
+  height: 100%;
+  background-color: #004867;
+  animation: loading-bar-animation 5s ease-out infinite;
+  border-radius: 20px;
+}
+
+@keyframes loading-bar-animation {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 20px;
+  margin-left: 30px;
+}
+
+.links {
+  gap: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  .nav-title {
-    font-size: xx-large;
+  flex: 1;
+  margin: 20px;
+  img {
+    width: 35px;
+    filter: brightness(0.5);
   }
-  .links {
-    display: flex;
-    gap: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    img {
-      width: 70%;
-      filter: brightness(0.5);
-    }
-    img:hover {
-      filter: brightness(1);
-    }
-    img.active {
-      filter: brightness(1);
-    }
+  img:hover {
+    filter: brightness(1);
+  }
+  img.active {
+    filter: brightness(1);
   }
 }
 
@@ -74,7 +100,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
   min-height: 80vh;
 }
 
@@ -87,11 +112,6 @@ body {
   overflow: hidden;
 }
 
-.animation-appear {
-  animation: fade-in 6s ease-out forwards;
-  opacity: 0;
-}
-
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -102,7 +122,6 @@ body {
 }
 
 .items-page {
-  min-width: 100vw;
   min-height: 100vh;
   margin: 0 20px;
   display: flex;
@@ -158,7 +177,7 @@ body {
     gap: 20px;
     background-image: url("./assets/item-desc-bg.png");
     background-position: center;
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
     width: 75vw;
     height: 72vh;
@@ -265,7 +284,7 @@ body {
   body {
     font-size: 14px;
   }
- 
+
   .item-display-main-container {
     gap: 20px;
     display: flex;
@@ -279,7 +298,7 @@ body {
       gap: 20px;
       background-image: url("./assets/item-desc-bg.png");
       background-position: center;
-      background-size:cover;
+      background-size: cover;
       background-repeat: no-repeat;
       width: 75vw;
       height: auto;
@@ -295,7 +314,7 @@ body {
         order: 1;
         margin-left: auto;
       }
-  
+
       .item-display-container {
         display: flex;
         justify-content: center;
@@ -346,4 +365,3 @@ body {
     font-size: 16px;
   }
 }
-
