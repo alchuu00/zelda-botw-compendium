@@ -18,6 +18,7 @@ function App() {
   const [audio, setAudio] = useState(null);
   const [showContent, setShowContent] = useState(false);
   const [selectedItem, setSelectedItem] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
@@ -32,10 +33,11 @@ function App() {
       .then((resp) => resp.json())
       .then((apiData) => {
         setData(apiData.data);
+        setLoading(false);
       });
   }, []);
 
-  console.log(data)
+  console.log(data);
 
   useEffect(() => {
     const audioElement = new Audio(soundtrack);
@@ -43,7 +45,6 @@ function App() {
     audioElement.loop = true;
     setAudio(audioElement);
   }, []);
-  
 
   const handlePlayButtonClick = () => {
     if (audio) {
@@ -71,30 +72,98 @@ function App() {
 
   return (
     <div className="App">
-      <HoverSound/>
+      <HoverSound />
       {showContent ? (
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/creatures" element={<CreaturePage data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
-            <Route path="/monsters" element={<MonsterPage data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
-            <Route path="/equipment" element={<EquipmentPage data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
-            <Route path="/materials" element={<MaterialPage data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
-            <Route path="/treasure" element={<TreasurePage data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
-            <Route path="/item/:id" element={<ItemDisplay data={data} selectedItem={selectedItem} handleItemDisplayExit={handleItemDisplayExit} handleItemClick={handleItemClick} />} />
-          </Routes>
-          <Footer />
-        </Router>
+        loading ? (
+          <div className="homepage">
+            <div className="loading-bar">
+              <div className="loading-bar-progress"></div>
+            </div>
+          </div>
+        ) : (
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Homepage loading={loading} />} />
+              <Route
+                path="/creatures"
+                element={
+                  <CreaturePage
+                    data={data}
+                    selectedItem={selectedItem}
+                    handleItemDisplayExit={handleItemDisplayExit}
+                    handleItemClick={handleItemClick}
+                  />
+                }
+              />
+              <Route
+                path="/monsters"
+                element={
+                  <MonsterPage
+                    data={data}
+                    selectedItem={selectedItem}
+                    handleItemDisplayExit={handleItemDisplayExit}
+                    handleItemClick={handleItemClick}
+                  />
+                }
+              />
+              <Route
+                path="/equipment"
+                element={
+                  <EquipmentPage
+                    data={data}
+                    selectedItem={selectedItem}
+                    handleItemDisplayExit={handleItemDisplayExit}
+                    handleItemClick={handleItemClick}
+                  />
+                }
+              />
+              <Route
+                path="/materials"
+                element={
+                  <MaterialPage
+                    data={data}
+                    selectedItem={selectedItem}
+                    handleItemDisplayExit={handleItemDisplayExit}
+                    handleItemClick={handleItemClick}
+                  />
+                }
+              />
+              <Route
+                path="/treasure"
+                element={
+                  <TreasurePage
+                    data={data}
+                    selectedItem={selectedItem}
+                    handleItemDisplayExit={handleItemDisplayExit}
+                    handleItemClick={handleItemClick}
+                  />
+                }
+              />
+              <Route
+                path="/item/:id"
+                element={
+                  <ItemDisplay
+                    data={data}
+                    selectedItem={selectedItem}
+                    handleItemDisplayExit={handleItemDisplayExit}
+                    handleItemClick={handleItemClick}
+                  />
+                }
+              />
+            </Routes>
+            <Footer />
+          </Router>
+        )
       ) : (
         <div className="homepage">
-        <div className="begin-btn"
-          onClick={() => {
-            handlePlayButtonClick();
-            handleButtonClick();
-          }}
-        >
-        </div>
+          <div
+            className="begin-btn"
+            onClick={() => {
+              handlePlayButtonClick();
+              handleButtonClick();
+            }}
+          ></div>
         </div>
       )}
     </div>
