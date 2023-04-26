@@ -1,5 +1,9 @@
 import React from "react";
 import { startCase } from "lodash";
+import heartHalf from "/src/assets/heart_half.png"
+import heartFull from "/src/assets/heart.png"
+import line from "/src/assets/line.png"
+import exitBtn from "/src/assets/back.png"
 
 function ItemDisplay({ item, handleItemDisplayExit }) {
   return (
@@ -17,7 +21,7 @@ function ItemDisplay({ item, handleItemDisplayExit }) {
                 <div>
                   Hearts recovered:{" "}
                   {item.hearts_recovered < 0 ? (
-                    <img src="src/assets/heart_half.png" alt="Half Heart" />
+                    <img src={heartHalf} alt="Half Heart" />
                   ) : null}
                   {item.hearts_recovered > 0 ? (
                     <>
@@ -25,7 +29,7 @@ function ItemDisplay({ item, handleItemDisplayExit }) {
                         (_, index) => (
                           <img
                             key={index}
-                            src="src/assets/heart.png"
+                            src={heartFull}
                             alt="Full Heart"
                             className="margin"
                           />
@@ -33,7 +37,7 @@ function ItemDisplay({ item, handleItemDisplayExit }) {
                       )}
                       {item.hearts_recovered % 1 === 0.5 ? (
                         <img
-                          src="src/assets/heart_half.png"
+                          src={heartHalf}
                           alt="Half Heart"
                           className="margin"
                         />
@@ -53,9 +57,9 @@ function ItemDisplay({ item, handleItemDisplayExit }) {
             </div>
           </div>
           <div className="item-display-container b">
-            <img className="line" src="src\assets\line.png"></img>
+            <img className="line" src={line}></img>
             <div className="description">{item.description}</div>
-            <img className="line" src="src\assets\line.png"></img>
+            <img className="line" src={line}></img>
             {item.common_locations && item.common_locations.length > 0 && (
               <div className="display-row">
                 <strong>Common locations: </strong>
@@ -95,7 +99,7 @@ function ItemDisplay({ item, handleItemDisplayExit }) {
               ) : null}
             </div>
           </div>
-          <div className="item-display-container c"><div className="exit-btn" onClick={handleItemDisplayExit}><img src="src\assets\back.png" alt="" /></div></div>
+          <div className="item-display-container c"><div className="exit-btn" onClick={handleItemDisplayExit}><img src={exitBtn} alt="" /></div></div>
         </div>
       </div>
     </>

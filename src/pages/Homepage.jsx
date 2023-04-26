@@ -1,10 +1,11 @@
 import React from "react";
+import homepageLogo from "/src/assets/The_Legend_of_Zelda_Breath_of_the_Wild_logo.png"
 
-function Homepage({ loading }) {
+function Homepage() {
   return (
     <div className="homepage">
       <img
-          src="src\assets\The_Legend_of_Zelda_Breath_of_the_Wild_logo.png"
+          src={homepageLogo}
           className="homepage-img"
           alt="Homepage Image"
         />

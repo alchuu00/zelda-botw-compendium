@@ -1,5 +1,10 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import creatureIcon from "/src/assets/creature_icon.png"
+import monstersIcon from "/src/assets/monster_icon.png"
+import materialsIcon from "/src/assets/materials_icon.png"
+import equipmentIcon from "/src/assets/equipment_icon.png"
+import treasureIcon from "/src/assets/treasure_icon.png"
 
 function Navbar() {
   const location = useLocation();
@@ -9,31 +14,31 @@ function Navbar() {
       <div className="links">
         <Link to="/creatures">
           <img
-            src="src\assets\creature_icon.png"
+            src={creatureIcon}
             className={location.pathname === "/creatures" ? "active" : ""}
           />
         </Link>
         <Link to="/monsters">
           <img
-            src="src\assets\monster_icon.png"
+            src={monstersIcon}
             className={location.pathname === "/monsters" ? "active" : ""}
           />
         </Link>
         <Link to="/materials">
           <img
-            src="src\assets\materials_icon.png"
+            src={materialsIcon}
             className={location.pathname === "/materials" ? "active" : ""}
           />
         </Link>
         <Link to="/equipment">
           <img
-            src="src\assets\equipment_icon.png"
+            src={equipmentIcon}
             className={location.pathname === "/equipment" ? "active" : ""}
           />
         </Link>
         <Link to="/treasure">
           <img
-            src="src\assets\treasure_icon.png"
+            src={treasureIcon}
             className={location.pathname === "/treasure" ? "active" : ""}
           />
         </Link>
